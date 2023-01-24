@@ -1,32 +1,27 @@
-function printHighScores() {
-
-    let highScores = JSON.parse(localStorage.getItem("highscores")) || [];
+function printHighScores(){
+    let highScores = JSON.parse(localStorage.getItem("highscores")) ||[];
     
     highScores.sort(function(a, b) {
         return b.score - a.score;
     })
     
-    highScores.forEach(function(score) {
+    highScores.forEach(function(score){
         let li = document.createElement("li");
-        li.textContent = '${score.initials} - ${score.score}'
+        li.textContent = `${score.initials} - ${score.score}`
     
         let ol = document.getElementById("highscores");
         ol.appendChild(li);
     })
     }
     
-    function clearHighScores() {
-       localStorage.removeItem("highscores");
-       window.location.reload();
+    function clearHighScores(){
+    localStorage.removeItem("highscores");
+    window.location.reload();
     }
     
-    
+    //document.getElementById("clear").onClick = clearHighScores;
     let clearButton = document.getElementById("clear");
     clearButton.addEventListener("click", clearHighScores);
-    
-    
-    //document.getElementById("clear").onclick = clearHighScores;
-    
-    printHighScores();
+     printHighScores();
     
     
